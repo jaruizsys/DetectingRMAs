@@ -6,10 +6,10 @@
 
 Let us start from the concept of RMA: RMA stands for Return Merchandise Authorization. It's a formal agreement between a seller (usually a retailer) and a customer that allows the return of a product.
 
-In many businesses, the RMA process is something that could generate unexpected expenses since it generally involves the replacement of a product, at the same time that the customer could have a bad experience when using the service or product. Specifically in our GPS tracking business, this is no different. I will focus on the world of GPS devices to predict when devices can go through the RMA process by exploring the malfunction warnings collected.
+In many businesses, the RMA process is something that could generate unexpected expenses since it generally involves the replacement of a product and the customer could have a bad experience when using the service or product. Specifically in our GPS tracking business, this is not different. I will focus on the world of GPS devices to predict when devices can go through the RMA process by exploring the malfunction warnings collected.
 
 ### Rationale
-From business perspective it is relevant keeping all customers happy with the product they are getting from a company like us. Considering this is a GPS tracking company, the good performance of the devices installed in each vehicle is essential to fulfill this promise.
+From a business perspective, it is relevant keeping all customers happy with the product they are obtaining from a company like us. Considering this is a GPS tracking company, the good performance of the devices installed in each vehicle is essential to fulfill this promise.
 
 ### Research Question
 
@@ -86,19 +86,19 @@ The analysis will be based on 3 different files consisting of:
 
 #### Missed values for devices dataset
 
-Once the devices_active and devices_rma dataset are concatenated, this is identified some missed `imei`s. This is know internally the system could use ESN or IME as identified over GPS Tracking devices. For this reason, we'll be filling those empty spaces when the ESN value.
+Once the `devices_active` and `devices_rma` dataset are concatenated, this is identified some missed `imei`. This is know internally the system could use ESN or IMEI as identifier for GPS Tracking devices. For this reason, we'll be filling those empty spaces with the ESN value.
 
 ![Missed values - heatmap](images/heatmap_before.png)
 
 #### Re-evaluating missed values after cleanup
 
-Once the missed IMEIs has being updated with the ESN, this is evaluating the missed values using a heatmap graph again:
+Once the missed IMEIs has being updated with the ESN, this is evaluated the missed values using a heatmap graph again:
 
 ![Missed values - heatmap](images/heatmap_after.png)
 
 #### Proportion of RMA devices over the devices dataset
 
-The following shows the data balances for active vs devices processed as RMA. This is an imbalanced dataset.
+The following shows the data balancing for active vs devices processed as RMA. This is an imbalanced dataset.
 
 ![RMA Balance](images/dataset_balance.png)
 
@@ -130,20 +130,20 @@ Based on the above graph this is identified the following features are the most 
 - IgnitionOnEventsAbnormal
 - totalCases
 
-The liveAgeDays is an indicator of natural wear and tear on devices. Over time, electronic components, vehicle vibration and other factors can affect GPS device performance. Considering this attribute, the company should review any replacement policies (Warranty) to avoid incurring in extra cost by assuming it.
+The liveAgeDays is an indicator of natural wear and tear of devices. Over time, electronic components, vehicle vibration and other factors can affect GPS device performance. Considering this attribute, the company should review any replacement policies (Warranty) to avoid incurring in extra costs by assuming it.
 
-Devices presenting worse HDOP quality are subject to replacement or installation review. When the GPS signal is not accurate enough, the customer could have a bad experience when tracking vehicle's location. This is a critical factor as showns in the above results.
+Devices presenting worse HDOP quality are subject to replacement or installation review. When the GPS signal is not accurate enough, the customer could have a negative experience when tracking vehicle's location. This is a critical factor as showns in the above results.
 
-When the Ignition On/Off appears with high frequency over reports received from devices is a bad signal of device's performance. We could tackle this by evaluating devices where the ignition is NOT detected correctly, firmware with failures over GPS devices and others.
+When the Ignition On/Off appears with high frequency over reports received from devices, this is a negative sign of the device's performance. We could tackle this by evaluating devices where the ignition is NOT detected correctly, firmware with failures over GPS devices and others.
 
-The total cases is when this has being detected by the account directly and escalating to us (GPS Provider) about issues found with device.
+The totalCases column refers to the cases reported by customer when they need to escalate with our internal support team a failure or concern regarding the device.
 
 #### Feature analysis
 
 ##### Device version with higher RMAs reported
 ![RMA vs Version](images/rma_vs_version.png)
 
-Devices labeles as `88` (Geometris) as presentign higher RMA over the datasource used for this exercise followed by `4K`, `LMU2630 CAT M`
+Devices labels as `88` (Geometris) as presenting higher RMA over the datasource used for this exercise followed by `4K`, `LMU2630 CAT M`
 
 ##### RMA average time to live
 ![RMA ttl](images/rma_ttl.png)
@@ -153,7 +153,7 @@ The `liveAgeDays` indicator, the duration in days of the device's active state, 
 ##### What is the version with worse HDOPQuality?
 ![Worse HDOP Quality](images/worse_hdop.png)
 
-Based on the above graph the TTU730 LTE A presents the worse HDOP quality. This should be considered to use an alternative option of hardware as replacement for this version on replacements and new sales in order to avoid bad customer experiences.
+Based on the above graph the TTU730 LTE A presents the worse HDOP quality. This should be considered to use an alternative option of hardware as replacement for this version on replacements and new sales in order to avoid unpleasant customer experiences.
 
 
 ### Next steps
