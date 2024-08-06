@@ -148,33 +148,51 @@ The totalCases column refers to the cases reported by customer when they need to
 
 #### Feature analysis
 
-##### Device version with higher RMAs reported
-![RMA vs Version](images/rma_vs_version.png)
-
-Devices version labeled as `88` (Geometris) are presenting higher RMA over the datasource used for this exercise followed by `4K`, `LMU2630 CAT M`
-
 ##### RMA average time to live
 ![RMA ttl](images/rma_ttl.png)
 
 The `liveAgeDays` reflects the duration in days of the device's active state. For devices marked as RMA, this value is equivalent on average to `519 days`. This measure must be considered by the company to review the policies it offers to customers regarding device replacement.
+
+##### What is the average live age in days per device version?
+![RMA vs Version](images/rma_vs_version.png)
+
+Devices version labeled as `2630 3G` is the most durable device in the GPS platform. Meanwhile the `TLP2` and `50MG` a lowest benefit for the company as the rate of live age (TTL) is lower meaning the failures are raising quickly once devices are installed. It is important for the company to use devices presenting lower or non rate of TTL. 
+
 
 ##### What is the version with worse HDOPQuality?
 ![Worse HDOP Quality](images/worse_hdop.png)
 
 Based on the above graph the `TTU730 LTE A` presents the worse HDOP quality. This should be considered to use an alternative option of hardware as replacement for this version on replacements and new sales in order to avoid unpleasant customer experiences.
 
+##### What is the model with major reported cases?
+![By Total cases](images/by_totalcases.png)
 
-### Next steps
+The `4K` version is the model of devices getting major number of cases reportes through "Sales Force" followed by `88` series. The first one was identified as a recent implementation justifying the amount of cases that could be related to customer and internal trainings over the new version. 
+
+##### What is the model presenting higher IgnitionOnEventsAbnormal?
+![Abnormal Ignitions](images/abnormal_ignitions.png)
+
+The `88` series presents the major number of abnormal IgnitionOn events with a high difference vs the next version (`4K`). This is relevant for customer's experience devices must be correctly installed and reporting correctly the Ignition On/Off events. This is suggested to revisit the installation procedure for `88` version and/or consider an alternative GPS device with similar capabilities.
+
+## Findings
+
+- The TTL (Live Age in days) average for a device being marked as RMA is `519 days`. It is an important meassure for the company to review the RMA policies.
+- Devices like `TTU730 LTE A` and `VeoSphere` shows the worse HDOP Quality. This is one of the most relevant criteria triggering the RMA process.
+- The device version labeled `88` present the major number of abnormal IgnitionOn events. This is important to identify the main reasons of this failure and/or the possibility to use a device with similar capabilities.
+- KNeighborsClassifier was the best performing model to predict the isRMA classification.
+
+
+## Next steps
 As next steps to improve the accuracy of this model we could add more features to the dataset. It is possible to add more `Maintenance Warnings` related to unexpected behavior. This is commonly known when there are more cases such as when the latitude and longitud didn't change between reports.  Additionally, this could be important to include reasons of RMA in order to include major analysis beneficial for the company.
 
-### Outline of project
+## Outline of project
 
 The following is the notebook used to perform analysis over the data mentioned above:
 
 [MaintenanceWarnings.ipynb](MaintenanceWarnings.ipynb)
 
 
-#### Contact and Further Information
+### Contact and Further Information
 
 **John Ruiz**\
 Director of Software Engineering\
