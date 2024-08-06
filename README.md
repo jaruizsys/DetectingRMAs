@@ -125,9 +125,8 @@ We'll be removing some features with high correlation and the identifiers column
 
 Based on the above results, the best model fitting the dataset provided is the `KNeighborsClassifier`. I'll be using this model to predict the target column `isRMA`.
 
-### Results
 
-#### Feature Importance
+### Feature Importance
 
 ![Feature Importance](images/feature_importance.png)
 
@@ -146,30 +145,30 @@ When the Ignition On/Off appears with high frequency over reports received from 
 
 The totalCases column refers to the cases reported by customer when they need to escalate with our internal support team concerning any failure or concern with the device.
 
-#### Feature analysis
+### Feature analysis
 
-##### RMA average time to live
+#### RMA average time to live
 ![RMA ttl](images/rma_ttl.png)
 
 The `liveAgeDays` reflects the duration in days of the device's active state. For devices marked as RMA, this value is equivalent on average to `519 days`. This measure must be considered by the company to review the policies it offers to customers regarding device replacement.
 
-##### What is the average live age in days per device version?
+#### What is the average live age in days per device version?
 ![RMA vs Version](images/rma_vs_version.png)
 
 Devices version labeled as `2630 3G` is the most durable device in the GPS platform. Meanwhile the `TLP2` and `50MG` a lowest benefit for the company as the rate of live age (TTL) is lower meaning the failures are raising quickly once devices are installed. It is important for the company to use devices presenting lower or non rate of TTL. 
 
 
-##### What is the version with worse HDOPQuality?
+#### What is the version with worse HDOPQuality?
 ![Worse HDOP Quality](images/worse_hdop.png)
 
 Based on the above graph the `TTU730 LTE A` presents the worse HDOP quality. This should be considered to use an alternative option of hardware as replacement for this version on replacements and new sales in order to avoid unpleasant customer experiences.
 
-##### What is the model with major reported cases?
+#### What is the model with major reported cases?
 ![By Total cases](images/by_totalcases.png)
 
 The `4K` version is the model of devices getting major number of cases reportes through "Sales Force" followed by `88` series. The first one was identified as a recent implementation justifying the amount of cases that could be related to customer and internal trainings over the new version. 
 
-##### What is the model presenting higher IgnitionOnEventsAbnormal?
+#### What is the model presenting higher IgnitionOnEventsAbnormal?
 ![Abnormal Ignitions](images/abnormal_ignitions.png)
 
 The `88` series presents the major number of abnormal IgnitionOn events with a high difference vs the next version (`4K`). This is relevant for customer's experience devices must be correctly installed and reporting correctly the Ignition On/Off events. This is suggested to revisit the installation procedure for `88` version and/or consider an alternative GPS device with similar capabilities.
